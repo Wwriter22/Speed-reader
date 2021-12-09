@@ -1,0 +1,109 @@
+<!--/**
+* Speed Reader
+* Create a website that helps readers read faster
+* Author: William Writer
+* Collaborator(s):
+* Collaboration:
+* Date: Date the program is handed in
+* On My Honor, I confirm that I followed all collaboration policy guidelines, and that the work I am submitting is my own: WW
+**/ -->
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+<head>
+    <meta charset="UTF-8">
+    <title>Speed Reader</title> <!-- Title for the website -->
+</head>
+<!-- Style for all of the links on this page: There is a link(color of the link), a visited(color once you have visited
+ the site), a hover(color that occurs when you hover over the link with your mouse), and an active(once active, it will
+ stay that color)-->
+<style>
+
+    a:link {
+        color: Black;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    a:visited {
+        color: red;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    a:hover {
+        color: red;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+    a:active {
+        color: black;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+</style>
+<body bgcolor=black>
+<h1><p style=color:white;">Speed Reader</p></h1> <!-- Header for page-->
+<hr/>
+<p><p style=color:white;">Please Enter The Text That You Want To Speed Read:</p></p>
+<!--Tells the user to enter the words that they want to read-->
+<form>
+    <input id="userInput" type="text">
+    <button onclick="input()">Click</button>
+    <!--<input type = "text" name = "Copy & Paste Text Box" value = "Type Here"> -->
+    <!--Gives the user a box to type in what they want to read -->
+    <hr/> <!-- Adds a horizontal line -->
+    <h2><p style=color:white;">Choose Your Own Options:</p></h2> <!--Gives the user the option to select what Speed in WPM they want to read at -->
+    <p1> <strong> <p style="font-size:18px;color:white"> Speed: </p> </strong></p1>
+    <p style=color:white;"><input type = "radio" name="Speed">100 WPM</p>
+    <p style=color:white;"><input type = "radio" name="Speed">200 WPM <br></p>
+    <p style=color:white;"><input type = "radio" name="Speed">300 WPM</p>
+    <p style=color:white;"><input type = "radio" name="Speed">400 WPM <br></p>
+    <p style=color:white;"><input type = "radio" name="Speed">500 WPM</p>
+    <p style=color:white;"><input type = "radio" name="Speed">600 WPM <br></p>
+    <p style=color:white;"><input type = "radio" name="Speed">700 WPM</p>
+    <p style=color:white;"><input type = "radio" name="Speed">800 WPM <br></p>
+    <p style=color:white;"><input type = "radio" name="Speed">900 WPM</p>
+    <p style=color:white;"><input type = "radio" name="Speed">1000 WPM <br></p>
+    <p style=color:white;"><input type = "radio" name="Speed">1100 WPM</p>
+    <p style=color:white;"><input type = "radio" name="Speed">1200 WPM <br></p>
+    <p style=color:white;"><input type = "radio" name="Speed">1300 WPM</p>
+    <p style=color:white;"><input type = "radio" name="Speed">1400 WPM <br></p>
+    <br>
+
+    <p1> <strong> <p style="font-size:18px;color: white"> Preferences: </p> </strong></p1>  <!--Has a list of preferences that the user can choose from  -->
+    <p style=color:white;"><input type = "checkbox" name="">Slow Down WPM Temporary After Each Sentence <br></p>
+    <p style=color:white;"><input type = "checkbox" name="">Slow Down WPM Temporary After Words Bigger than 6 Characters<br></p>
+    <p style=color:white;"><input type = "checkbox" name="">Want To Build Up To Your WPM Rather Than Going Strait Into It<br></p>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want an epic song in the background?</a><br>
+    <hr/>
+    <div id="button" style="font-size:25px" ><a href="ActualReadingSection.html">Go Speed Read!</a></div>
+</form>
+</body>
+</html>
+
+<script type="text/javascript">
+    // ALLOWS the user input to be copied to clipboard:
+
+        // const userInput = document.getElementById("userInput");
+        // const btncopy = document.getElementById("btncopy");
+        //
+        // btncopy.onclick = function (){
+        //     // select the text
+        //     userInput.select();
+        //
+        //     // copying the text
+        //     document.execCommand("Copy")
+        // }
+
+    function input(){
+        // stores the user inputs
+        let userInput = document.getElementById("userInput").value;
+        let words = userInput.split(/\W+/);
+        let aListWords = [words];
+        aListWords.forEach(function(item, index, array){
+            console.log(item, index); // prints out all of the array parts to the log
+        })
+
+
+    }
+
+
+</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>
+        How to remove an HTML element
+        using JavaScript ?
+    </title>
+
+    <!-- style sheet for the div Num -->
+    <style>
+        #Num {
+            height: 100px;
+            font-size: 500px;
+            width: 200px;
+            margin: 0 auto;
+            color: white;
+        }
+    </style>
+</head>
+
+<body style = "text-align:center; background: black">
+
+<p id = "Up" style =
+        "font-size: 5px; font-weight: bold; color: white">
+</p>
+
+
+<button onClick = "hideButton()">
+    click here
+</button>
+
+<p id = "Next_Letter" style =
+        "color: white; font-size: 24px; font-weight: bold;">
+</p>
+
+<div id = "Num"  >
+    3
+</div>
+
+
+<!--got this from https://stackoverflow.com/questions/820951/hide-div-after-a-few-seconds -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+<div id="mydiv">3</div>
+
+setTimeout(function() {
+$('#mydiv').fadeOut('fast');
+}, 1000); // <-- time in milliseconds
+<!-- Script to remove HTML element -->
+
+$('#mydiv').delay(1000).hide(0);
+
+
+var up = document.getElementById('Up');
+var down = document.getElementById('Next_Letter');
+var div = document.getElementById("Num");
+up.innerHTML = "Click on button to remove the element.";
+
+function Switch_Letter() {
+    //setTimeout(function(){$("#Next_Letter").trigger("click")},1000); //hopefully gets to click a button to move to the next
+//word
+    div.remove();
+    down.innerHTML = "Element is removed.";
+
+}
+
+
+</script>
+
+
+
+
+</body>
+</html>
