@@ -1,27 +1,25 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>
-        SpeedReader.com
-    </title>
 
-    <!-- style sheet for the div Num -->
-    <style>
-        #Next_Letter_A {
-            height: 100px;
-            font-size: 500px;
-            width: 200px;
-            margin: 0 auto;
-            color: white;
-        }
-        #Next_Letter_B {
-            height: 100px;
-            font-size: 500px;
-            width: 200px;
-            margin: 0 auto;
-            color: white;
-        }
-    </style>
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+<style>
+    #Next_Letter_A {
+        height: 100px;
+        font-size: 500px;
+        width: 200px;
+        margin: 0 auto;
+        color: white;
+    }
+    #Next_Letter_B {
+        height: 100px;
+        font-size: 500px;
+        width: 200px;
+        margin: 0 auto;
+        color: white;
+    }
+</style>
 </head>
 
 <body style = "text-align:center; background: black">
@@ -34,12 +32,10 @@
 
 </div>
 
-<!--Fixes the issue is related to the jQuery/JavaScript file not added-->
-<!-- got this from https://stackoverflow.com/questions/10779148/javascript-jquery-is-not-defined-function-error -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script>
- //got this from https://jsfiddle.net/pVzjU/ or
- // https://stackoverflow.com/questions/10294323/how-to-change-content-of-div-in-a-html-after-some-time-has-passed-and-then-start
+    //got this from https://jsfiddle.net/pVzjU/ or
+    // https://stackoverflow.com/questions/10294323/how-to-change-content-of-div-in-a-html-after-some-time-has-passed-and-then-start
     $('#Next_Letter_A').attr('data-content', 1);
     $('#Next_Letter_B').attr('data-content', 1);
     var contentAll = {Next_Letter_A: ['2', '1', '3'], // Prints out 3,2,1 to the screen
@@ -54,6 +50,9 @@
         num = (num+1)%content.length;
         $el.html(content[num]);
         $el.attr('data-content', num);
+        if(numMax === content){
+            return;
+        }
     };
 
     setInterval(function(){
@@ -63,9 +62,6 @@
         changeRegion('Next_Letter_B');
     }, 2000);
 </script>
-
-
-
 
 </body>
 </html>
