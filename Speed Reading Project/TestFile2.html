@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<form id="form" onsubmit="return false;">
+<!--    <input id="userInput" type="text">-->
+<!--    <button onclick="input()">Click</button>-->
+    <input type="text" id="userInput" />
+    <input type="submit" onclick="UserInput(); input()" />
+</form>
+
+<script>
+    function UserInput() {
+        // var input = document.getElementById("userInput").value;
+        // alert(input);
+    }
+    function input() {
+
+        // stores the user inputs
+        let userInput = document.getElementById("userInput").value;
+        let words = userInput.split(/\W+/);
+        let aListWords = [words];
+        console.log(aListWords) // logs an array with a length of user input
+        aListWords.forEach(function (item, index, array) {
+            console.log(item, index); // prints out all of the array parts to the log
+        })
+    }
+</script>
+
+</body>
+</html>

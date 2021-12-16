@@ -40,19 +40,26 @@
         text-decoration: underline;
     }
 </style>
-<body bgcolor=black>
+
+<body bgcolor=black> <!-- Background color is black to make the user's reading experience more enjoyable -->
 <h1><p style=color:white;">Speed Reader</p></h1> <!-- Header for page-->
 <hr/>
-<p><p style=color:white;">Please Enter The Text That You Want To Speed Read:</p></p>
+
 <!--Tells the user to enter the words that they want to read-->
-<form>
-    <input id="userInput" type="text">
-    <button onclick="input()">Click</button>
-    <!--<input type = "text" name = "Copy & Paste Text Box" value = "Type Here"> -->
-    <!--Gives the user a box to type in what they want to read -->
+<p><p style=color:white;">Please Enter The Text That You Want To Speed Read:</p></p>
+<form id="form" onsubmit="return false;"> <!--This utilizes the form tag to create a submit button that will call
+ on the input() function below whose intended purpose is to store the users words as an array -->
+        <input type="text" id="userInput" /> <!--Allows the user to type in a text box -->
+        <input type="submit" onclick="input()" /> <!--When the user clicks the button, it will call the
+                                                   input() function -->
+
+
+
     <hr/> <!-- Adds a horizontal line -->
-    <h2><p style=color:white;">Choose Your Own Options:</p></h2> <!--Gives the user the option to select what Speed in WPM they want to read at -->
-    <p1> <strong> <p style="font-size:18px;color:white"> Speed: </p> </strong></p1>
+    <h2><p style=color:white;">Choose Your Own Options:</p></h2> <!--Gives the user the option to select what Speed in
+                                                                     WPM they want to read at -->
+    <p1> <strong> <p style="font-size:18px;color:white"> Speed: </p> </strong></p1> <!-- all of these have the same
+                                                                                      18 font white style-->
     <p style=color:white;"><input type = "radio" name="Speed">100 WPM</p>
     <p style=color:white;"><input type = "radio" name="Speed">200 WPM <br></p>
     <p style=color:white;"><input type = "radio" name="Speed">300 WPM</p>
@@ -69,13 +76,40 @@
     <p style=color:white;"><input type = "radio" name="Speed">1400 WPM <br></p>
     <br>
 
-    <p1> <strong> <p style="font-size:18px;color: white"> Preferences: </p> </strong></p1>  <!--Has a list of preferences that the user can choose from  -->
-    <p style=color:white;"><input type = "checkbox" name="">Slow Down WPM Temporary After Each Sentence <br></p>
-    <p style=color:white;"><input type = "checkbox" name="">Slow Down WPM Temporary After Words Bigger than 6 Characters<br></p>
-    <p style=color:white;"><input type = "checkbox" name="">Want To Build Up To Your WPM Rather Than Going Strait Into It<br></p>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Want an epic song in the background?</a><br>
-    <hr/>
+
+    <p1> <strong> <p style="font-size:18px;color: white"> Preferences: </p> </strong></p1>  <!--Has a list of
+                                                                                            preferences that the user
+                                                                                            can choose from  -->
+
+
+    <p style=color:white;"><input type = "checkbox" name=""> <!-- if the user checks this box, it will eventually
+                                                              trigger code that makes the WPM slow down after each
+                                                              sentence -->
+        Slow Down WPM Temporary After Each Sentence
+        <br></p>
+
+    <p style=color:white;"><input type = "checkbox" name=""><!--if the user checks this box, it will eventually
+                                                              trigger code that makes the WPM slow down for large words
+                                                               -->
+        Slow Down WPM Temporary For Words Bigger than 6 Characters
+        <br></p>
+
+    <p style=color:white;"><input type = "checkbox" name=""> <!--if the user checks this box, it will eventually
+                                                              trigger code that makes the WPM build up rather than just
+                                                              jumping strait into it-->
+        Want To Build Up To Your WPM Rather Than Going Strait Into It
+        <br></p>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> <!--Really just for fun, but this is a link
+                                                                            that will make a separate page on the user's
+                                                                             computer that will play a video -->
+        Want an epic song in the background?
+    </a><br>
+
+    <hr/> <!--adds a line-->
+
+    <!--This is a button that will take you to the next html file when clicked on-->
     <div id="button" style="font-size:25px" ><a href="ActualReadingSection.html">Go Speed Read!</a></div>
+
 </form>
 </body>
 </html>
@@ -94,18 +128,43 @@
         //     document.execCommand("Copy")
         // }
 
-    function input(){
+    // function input(){
+    //
+    //     // stores the user inputs
+    //     let userInput = document.getElementById("userInput").value;
+    //     let words = userInput.split(/\W+/);
+    //     console.log(words);
+    //     let aListWords = [words];
+    //     console.log(aListWords)
+    //     aListWords.forEach(function(item, index, array){
+    //         console.log(item, index); // prints out all of the array parts to the log
+    //     })
 
-        // stores the user inputs
+
+    function input() { //this function is intended to store the users input in an array with a length of however long
+                       //the amount of words amounts to.
+
         let userInput = document.getElementById("userInput").value;
-        let words = userInput.split(/\W+/);
-        let aListWords = [words];
-        aListWords.forEach(function(item, index, array){
+        let words = userInput.split(/\W+/); // splits up the so that they are seperated by commas
+        let aListWords = [words]; //creates an arraylist out of the words
+        console.log(aListWords) // logs an array with a length of user input
+        aListWords.forEach(function (item, index, array) { //turns each word of the arraylist into its own spot in
+                                                           //in the array
             console.log(item, index); // prints out all of the array parts to the log
         })
 
 
+        //These two functions were intended to transfer the array: AlistWords, to the Num3 file however, This is still a
+        //work in progress.
+        function User_input() {
+            this.array = aListWords;
+            this.getArray = function () {
+                return this.array;
+            }
+        }
+        function user_input() {
+            return User_input();
+        }
     }
-
 
 </script>
