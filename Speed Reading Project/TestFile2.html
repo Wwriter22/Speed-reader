@@ -1,34 +1,163 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Test</title>
+    <title>
+        SpeedReader.com
+    </title>
+    <script type="text/javascript" src="Speed%20Reader.html"></script>
+    <script type="text/javascript" src="Num3.html.js"></script>
+    <script src="Speed%20Reader.html"></script>
+    <script src="Num3.html"></script>
+
+    <style>
+
+
+    </style>
 </head>
-<body>
-<form id="form" onsubmit="return false;">
-<!--    <input id="userInput" type="text">-->
-<!--    <button onclick="input()">Click</button>-->
-    <input type="text" id="userInput" />
-    <input type="submit" onclick="UserInput(); input()" />
-</form>
+<!--Bring down the location of the numbers-->
+<center>.</center>
 
-<script>
-    function UserInput() {
-        // var input = document.getElementById("userInput").value;
-        // alert(input);
-    }
-    function input() {
 
-        // stores the user inputs
-        let userInput = document.getElementById("userInput").value;
-        let words = userInput.split(/\W+/);
-        let aListWords = [words];
-        console.log(aListWords) // logs an array with a length of user input
-        aListWords.forEach(function (item, index, array) {
-            console.log(item, index); // prints out all of the array parts to the log
-        })
-    }
+
+<body style = "text-align:center; background: black">
+
+<span style="color: white;font-size: 150px; height: 10px" id="count_num">3</span>
+
+
+
+<!--This CREATE A BOX WITH THE USERS INPUTted file-->
+
+<!--<p>&nbsp;</p>-->
+<!--<div id="list">-->
+<!--<p><center><iframe src="testingcode.txt" width=600 height=500 frameborder=1 ></iframe></center></p>-->
+<!--</div>-->
+
+
+
+
+
+<script src="Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+<script type="text/javascript">
+
+
+    $(function(){
+        var timer = setInterval(function(){
+            $("#count_num").html(function(i,html){
+
+                if(parseInt(html)>1)
+                {
+                    return parseInt(html)-1;
+                }
+                else
+                {
+                    clearTimeout(timer);
+                    return " ";
+                }
+            });
+
+        },1000);
+
+    });
+
+
+
+
+
+    //     var userValue = input();
+    //     userValue = userValue.getArray();
+    //     console.log(input().getArray())
+    //         console.log(userValue)
+    //
+    // document.write(input())
+    //     console.log(input().getArray())
+
 </script>
+
+<!--I created this ID so that I could implement the setTimeout function and actually display the users input-->
+<p id="word" style="color: white; font-size: 35px"></p>
+
+
+<input type='file' accept='text/plain' onchange='openFile(event)' style="color: white"><br>
+<script>
+    var openFile = function (event) {
+        var input = event.target;
+
+        var reader = new FileReader();
+        reader.onload = function () {
+            var text = reader.result;
+            //console.log(reader.result.substring(0, 200));
+            let count = "1"; //check
+            //DELETING THE SPACE AFTER THE + MAKES IT SO THAT THERE IS A LENGTH OF NOT 0
+            let words = text.split(' '); // splits up the so that they are seperated by commas
+            // var aListWords = [words]; //creates an arraylist out of the words
+
+           for(i = 0; i < words.length; i++) {
+                   console.log("arr  = " + words[i]);
+                   console.log("length = " + words.length);
+                   let alterWord = words[i];
+                    console.log(i + " = " + alterWord);
+
+                       setTimeout(() => { //Make the sec delay actually work
+                           document.getElementById("word").innerHTML = alterWord;
+
+                           console.log(alterWord);
+                       }, 3000);
+
+
+          }
+
+
+
+            //console.log(aListWords) // logs an array with a length of user input
+
+            // words.forEach(function (item, index, array) { //turns each word of the arraylist into its own spot in
+            //     // sessionStorage.setItem(count, item) //check
+            //     // sessionStorage.getItem(count)               //check                                //in the array
+            //     // console.log(item, index); // prints out all of the array parts to the log
+            //     // count++;
+            //     words = sessionStorage;
+            //
+            //     for (i = 0; i < 10; i++) { // WORK ON THIS
+            //         index = item;
+            //
+            //         console.log("words=" + words)
+            //         console.log(i)
+            //         console.log(index)
+            //         console.log("length = " + words.length)
+            //         console.log("current word " + words[i])
+            //         sessionStorage.setItem(count, item) // THis prints out the length successfully, but it doesnt change
+            //         // --> aListWords.length
+            //         sessionStorage.getItem(count)               //check                                //in the array
+            //         console.log(item, index); // prints out all of the array parts to the log
+            //         count++;
+            //
+            //
+            //
+            //
+            //     }
+            //})
+
+    };
+        reader.readAsText(input.files[0]);
+
+        //sessionStorage.setItem(count, item) //check
+                //sessionStorage.getItem(count)               //check                                //in the array
+
+
+
+
+
+    };
+
+
+
+
+</script>
+
+
+
 
 </body>
 </html>

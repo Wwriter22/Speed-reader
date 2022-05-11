@@ -4,70 +4,123 @@
     <title>
         SpeedReader.com
     </title>
+    <script type="text/javascript" src="Speed%20Reader.html"></script>
+    <script type="text/javascript" src="Num3.html.js"></script>
+    <script src="Speed%20Reader.html"></script>
+    <script src="Num3.html"></script>
 
-    <!-- style sheet for the div Num -->
     <style>
-        #Next_Letter_A {
-            height: 100px;
-            font-size: 500px;
-            width: 200px;
-            margin: 0 auto;
-            color: white;
-        }
-        #Next_Letter_B {
-            height: 100px;
-            font-size: 500px;
-            width: 200px;
-            margin: 0 auto;
-            color: white;
-        }
+
+
     </style>
 </head>
+<!--Bring down the location of the numbers-->
+<center>.</center>
+<center>.</center>
+
+
 
 <body style = "text-align:center; background: black">
 
+<span style="color: white;font-size: 150px; height: 10px" id="count_num">3</span>
 
-<div id = "Next_Letter_A" >
 
-</div>
-<div id = "Next_Letter_B" >
 
-</div>
 
-<!--Fixes the issue is related to the jQuery/JavaScript file not added-->
-<!-- got this from https://stackoverflow.com/questions/10779148/javascript-jquery-is-not-defined-function-error -->
+<script src="Scripts/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script>
- //got this from https://jsfiddle.net/pVzjU/ or
- // https://stackoverflow.com/questions/10294323/how-to-change-content-of-div-in-a-html-after-some-time-has-passed-and-then-start
-    $('#Next_Letter_A').attr('data-content', 1);
-    $('#Next_Letter_B').attr('data-content', 1);
-    var contentAll = {Next_Letter_A: ['2', '1', '3'], // Prints out 3,2,1 to the screen
-        Next_Letter_B: ['','','']}; // NOW I JUST NEED TO ADD THE USER'S Words here
 
-    changeRegion = function(id) {
-        var $el = $('#'+id),
-            num = $el.attr('data-content'),
-            content = contentAll[id],
-            numMax = content.length;
+<script type="text/javascript">
 
-        num = (num+1)%content.length;
-        $el.html(content[num]);
-        $el.attr('data-content', num);
+
+    $(function(){
+        var timer = setInterval(function(){
+            $("#count_num").html(function(i,html){
+
+                if(parseInt(html)>1)
+                {
+                    return parseInt(html)-1;
+                }
+                else
+                {
+                    clearTimeout(timer);
+                    return " ";
+                }
+            });
+
+        },1000);
+
+    });
+
+
+
+
+
+    //     var userValue = input();
+    //     userValue = userValue.getArray();
+    //     console.log(input().getArray())
+    //         console.log(userValue)
+    //
+    // document.write(input())
+    //     console.log(input().getArray())
+
+</script>
+
+
+<!--I created this ID so that I could implement the setTimeout function and actually display the users input-->
+<p id="word" style="color: white; font-size: 150px"></p>
+
+
+<input type='file' accept='text/plain' onchange='openFile(event)' style="color: white"><br>
+<script type="text/javascript">
+
+
+
+    var openFile = function (event) {
+        var input = event.target;
+
+        var reader = new FileReader();
+        reader.onload = function () {
+            var text = reader.result;
+
+            //console.log(reader.result.substring(0, 200));
+            // let count = "1"; //check
+            //DELETING THE SPACE AFTER THE + MAKES IT SO THAT THERE IS A LENGTH OF NOT 0
+            let words = text.split(' '); // splits up the so that they are seperated by commas
+            // var aListWords = [words]; //creates an arraylist out of the words
+
+            // for(let i = 0; i < words.length; i++) {
+            console.log("arr  = " + words[0]);
+            console.log("length = " + 10);
+            //var alterWord = words[i];
+            var inc = 0,
+                max = words.length;
+            // console.log(i + " = " + alterWord);
+
+            let delay = 125;
+
+
+            function timeoutLoop() {
+                document.getElementById("word").innerHTML = words[inc];
+                if (++inc < max)
+                    setTimeout(timeoutLoop, delay);
+            }
+
+            setTimeout(timeoutLoop, delay);
+
+
+
+        };
+        reader.readAsText(input.files[0]);
+
+
+
+
+
     };
 
-    setInterval(function(){
-        changeRegion('Next_Letter_A');
-    }, 1000);
-    setInterval(function(){
-        changeRegion('Next_Letter_B');
-    }, 2000);
 
 
-    //Accessing the user's array list from the Speed Reader html
- // var user_input = user_input(); // don't think it initialized properly
- var array = User_input().getArray()
- console.log(array)
 
 </script>
 
